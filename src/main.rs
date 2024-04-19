@@ -3,6 +3,7 @@ mod a1;
 
 use a1::LockFreeQueue;
 use a1::TwoLockQueue;
+use std::sync::Arc;
 
 fn main() {
    println!("Testing LockFreeQueue:");
@@ -19,7 +20,7 @@ fn main() {
    println!("LockFreeQueue test complete");
 
    println!("Testing TwoLockQueue:");
-   let queue = TwoLockQueue::new();
+   let queue: Arc<TwoLockQueue<i32>> = TwoLockQueue::new();
    queue.push(1);
    queue.push(2);
    queue.push(3);
